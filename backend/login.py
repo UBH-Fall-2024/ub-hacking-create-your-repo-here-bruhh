@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import PyMySQL
+from password_check import check_password
 
 app = Flask(name)
 
@@ -19,17 +20,23 @@ def getdbconnection():
     )
     return connection
 
-@app.route('/updateSpotStatus', methods=['POST'])
-def updatespotstatus():
-    data = request.json
-    spotid = data['spot_id']
-    status = data['status']
+@app.route('/login', methods=['POST'])
+def login_user():
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
 
-    query = "UPDATE parking_spots SET status = %s WHERE spot_id = %s"
-    cursor.execute(query, (status, spot_id))
-    db.commit()
+    connection = getdbconnection()
+    cursor = connection.cursor()
 
-    return jsonify({"message": "Parking spot updated successfully"})
+    query = cursor.execute('SELECT * FROM users WHERE email = %s', (email))
+    if check_password(query['password'], password):
+        user = cursor.fetchone()
+    
+    cursor.close()
+    connection.close()
 
-if __name == '__main':
-    app.run(debug=True)
+    if user:
+        return jsonify({'message': 'Login successful', 'user_id': user[0]}), 200
+    else:
+        return jsonify({'message': 'Invalid credentials'}), 401

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import PyMySQL
-import re
+from password_check import hash_password 
+from password_check import valid_email
 
 app = Flask(name)
 
@@ -19,15 +20,6 @@ def getdbconnection():
         database=dbconfig["database"],
     )
     return connection
-
-def hash_password(password):
-    salted_pass = bcrypt.gensalt()
-    hash_password = bcrypt.hashpw(password.encode('utf-8'), salted_pass)
-    return hash_password
-
-def valid_email(email):
-    regex = r'^[a-zA-Z0-9_.+-]+@buffalo\.edu$'
-    return re.match(regex, email) is not None
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -56,6 +48,6 @@ def register():
         cursor.commit()
 
     cursor.close()
-        connection.close()
+    connection.close()
         
     return jsonify({'message': 'Registeration Successful'}), 201
