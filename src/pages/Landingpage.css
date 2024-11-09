@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Livvic;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .left-side {
+    flex: 1;
+    position: relative;
+    background-color: #1e1e1e;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+  }
+  
+  .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: white;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  h1 .highlight {
+    color: #FFDD00; /* Yellow for "Spot" and "Park" */
+  }
+  
+  h1 .highlight .ampersand {
+    color: white; /* White for "&" */
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .landing-button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #FFDD00; /* Yellow background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .landing-button:hover {
+    background-color: #e6c200; /* Slightly darker yellow on hover */
+  }
+  
