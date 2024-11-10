@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import PyMySQL
+from flask_cors import CORS
 from password_check import hash_password 
 from password_check import valid_email
 
-app = Flask(name)
+app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
 
 dbconfig = {
     "host" : "localhost",
