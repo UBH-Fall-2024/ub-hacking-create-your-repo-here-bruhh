@@ -1,15 +1,35 @@
 // pages/Loginpage.js
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Loginpage.css';
 
 function Loginpage() {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Assuming login is successful, navigate to homepage
-    navigate('/homepage');
+
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),  // using state variables here
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert(result.message); // Handle successful login
+        navigate('/homepage'); // Navigate to homepage if login is successful
+      } else {
+        alert(result.message); // Handle failed login
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
 
   return (
@@ -20,9 +40,21 @@ function Loginpage() {
       <div className="right-side">
         <h1><span className="highlight"> Spot<span className="ampersand">&</span>Park</span></h1>
         <form className="login-form" onSubmit={handleLogin}>
-          <input type="text" placeholder="Username" className="input-field" />
-          <input type="password" placeholder="Password" className="input-field" />
-          <button type="submit" className="login-button">Login</button>
+          <input
+            type="text"
+            placeholder="Username"
+            className="input-field"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}  // Update username state
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="input-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}  // Update password state
+          />
+          <button type="submit" className="login-button">LOGIN</button>
         </form>
       </div>
     </div>
@@ -30,3 +62,4 @@ function Loginpage() {
 }
 
 export default Loginpage;
+
