@@ -6,7 +6,7 @@ from password_check import valid_email
 from password_check import check_password
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000"])
+CORS(app, origins=["http://10.84.101.26:3000"])
 
 dbconfig = {
     "host" : "localhost",
