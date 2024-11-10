@@ -1,7 +1,10 @@
+// pages/Registerpage.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Registerpage.css';
 
 function Registerpage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -10,9 +13,9 @@ function Registerpage() {
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    setIsEmailValid(value.endsWith('@buffalo.edu'));
+    const emailInput = e.target.value;
+    setEmail(emailInput);
+    setIsEmailValid(emailInput.endsWith('@buffalo.edu'));
   };
 
   const handleRegister = async (e) => {
@@ -36,6 +39,7 @@ function Registerpage() {
       const result = await response.json();
       if (response.ok) {
         alert(result.message); // Handle successful registration
+        navigate('/login'); // Navigate to login page after registration
       } else {
         alert(result.message); // Handle failed registration
       }
@@ -50,7 +54,7 @@ function Registerpage() {
         <img src="/Spot&ParkBG.jpg" alt="Background" className="background-image" />
       </div>
       <div className="right-side">
-        <h1><span className="highlight"> Spot<span className="ampersand">&</span>Park</span></h1>
+        <h1>Welcome to <span className="highlight">Spot&Park</span></h1>
         <form className="register-form" onSubmit={handleRegister}>
           <input
             type="text"
@@ -82,7 +86,7 @@ function Registerpage() {
             onChange={handleEmailChange}
           />
           {!isEmailValid && <p className="error-text">Email must end with "@buffalo.edu"</p>}
-          <button type="submit" className="register-button">REGISTER</button>
+          <button type="submit" className="register-button">Register</button>
         </form>
       </div>
     </div>
@@ -90,3 +94,4 @@ function Registerpage() {
 }
 
 export default Registerpage;
+

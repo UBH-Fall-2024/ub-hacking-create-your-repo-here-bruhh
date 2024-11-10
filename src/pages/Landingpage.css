@@ -55,7 +55,7 @@
     padding: 15px 30px;
     font-size: 1.5rem;
     background-color: #FFDD00; /* Yellow background */
-    color: white; /* White text */
+    color: black; /* White text */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -63,6 +63,6 @@
   }
   
   .landing-button:hover {
-    background-color: #e6c200; /* Slightly darker yellow on hover */
+    background-color: white; /* Slightly darker yellow on hover */
   }
   

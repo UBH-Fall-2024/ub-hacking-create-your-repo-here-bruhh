@@ -1,7 +1,10 @@
+// pages/Loginpage.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Loginpage.css';
 
 function Loginpage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,12 +17,13 @@ function Loginpage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password}),  // using state variables here
+        body: JSON.stringify({ username, password }),  // using state variables here
       });
 
       const result = await response.json();
       if (response.ok) {
         alert(result.message); // Handle successful login
+        navigate('/homepage'); // Navigate to homepage if login is successful
       } else {
         alert(result.message); // Handle failed login
       }
@@ -58,3 +62,4 @@ function Loginpage() {
 }
 
 export default Loginpage;
+

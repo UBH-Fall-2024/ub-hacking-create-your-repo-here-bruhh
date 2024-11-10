@@ -80,7 +80,7 @@
     padding: 15px;
     font-size: 1.5em;
     background-color: #ffcc00;
-    color: white;
+    color: blac;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -88,6 +88,6 @@
   }
   
   .register-button:hover {
-    background-color: #ffcc00;
+    background-color: white;
   }
   
