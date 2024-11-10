@@ -31,7 +31,7 @@ function Registerpage() {
     setPasswordMatch(true);
 
     try {
-      const response = await fetch('http://localhost/SpotNPark/include/register.php', {
+      const response = await fetch('http://10.84.101.26/SpotNPark/include/register.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ function Loginpage() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/SpotNPark/include/login.php', {
+      const response = await fetch('http://10.84.101.26/SpotNPark/include/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
