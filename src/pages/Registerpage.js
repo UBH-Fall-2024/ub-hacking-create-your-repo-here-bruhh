@@ -58,7 +58,7 @@ function Registerpage() {
         <img src="/Spot&ParkBG.jpg" alt="Background" className="background-image" />
       </div>
       <div className="right-side">
-        <h1>Welcome to <span className="highlight">Spot&Park</span></h1>
+      <h1><span className="highlight"> Spot<span className="ampersand">&</span>Park</span></h1>
         <form className="register-form" onSubmit={handleRegister}>
           <input
             type="text"

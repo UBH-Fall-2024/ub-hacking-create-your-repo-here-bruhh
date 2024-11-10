@@ -59,7 +59,7 @@ function Loginpage() {
           />
           {successMessage && <p className="success-text">{successMessage}</p>}
           {errorMessage && <p className="error-text">{errorMessage}</p>} 
-          <button type="submit" className="login-button">LOGIN</button>
+          <button type="submit" className="login-button">Login</button>
         </form>
       </div>
     </div>
