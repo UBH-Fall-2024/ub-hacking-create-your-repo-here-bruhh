@@ -1,0 +1,150 @@
+/* JarvisB.css */
+
+.parking-lot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #d3d3d3;
+    position: relative;
+}
+
+.lot-heading {
+    font-size: 2.5vw;
+    margin-bottom: 20px;
+    color: #333;
+    padding: 10px 20px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+.legend-left, .legend-right {
+    display: flex;
+    gap: 50px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 2vw;
+    color: #333;
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #333;
+}
+
+.available { background-color: green; }
+.unavailable { background-color: red; }
+.sa-reserved { background-color: darkblue; }
+.handicapped { background-color: blue; }
+
+.parking-lot {
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    width: 95vw;
+    position: relative;
+}
+
+.parking-row {
+    display: flex;
+    flex: 1;
+}
+
+.row-spacing {
+    margin-bottom: 2vw;
+}
+
+.parking-slot {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.parking-spot {
+    background-color: green;
+    border: 1px solid black;
+}
+
+.unavailable-spot {
+    background-color: red;
+    border: 1px solid black;
+}
+
+.blue-spot {
+    background-color: darkblue;
+    border: 1px solid black;
+}
+
+.lee-rd-label, .jarvis-a-label {
+    position: absolute;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #333;
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+.lee-rd-label { top: 87%; left: 89%; padding: 7px 25px; }
+.jarvis-a-label { top: 8%; left: 0.1%; }
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.confirm-button, .cancel-button {
+    font-size: 1.5rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-button { background-color: green; color: white; }
+.cancel-button { background-color: red; color: white; }

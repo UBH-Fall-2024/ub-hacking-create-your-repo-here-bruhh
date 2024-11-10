@@ -1,15 +1,17 @@
 // pages/Registerpage.js
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Registerpage.css';
 
 function Registerpage() {
-  const [email, setEmail] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(true);
+  const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    setIsEmailValid(value.endsWith('@buffalo.edu'));
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // Add registration logic here if needed
+
+    // Navigate to login page after registration
+    navigate('/login');
   };
 
   return (
@@ -18,20 +20,13 @@ function Registerpage() {
         <img src="/Spot&ParkBG.jpg" alt="Background" className="background-image" />
       </div>
       <div className="right-side">
-        <h1><span className="highlight"> Spot<span className="ampersand">&</span>Park</span></h1>
-        <form className="register-form">
+        <h1>Welcome to <span className="highlight">Spot&Park</span></h1>
+        <form className="register-form" onSubmit={handleRegister}>
           <input type="text" placeholder="Username" className="input-field" />
           <input type="password" placeholder="Password" className="input-field" />
           <input type="password" placeholder="Confirm Password" className="input-field" />
-          <input 
-            type="email" 
-            placeholder="Email" 
-            className={`input-field ${isEmailValid ? '' : 'invalid'}`} 
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {!isEmailValid && <p className="error-text">Email must end with "@buffalo.edu"</p>}
-          <button type="submit" className="register-button">REGISTER</button>
+          <input type="email" placeholder="Email" className="input-field" />
+          <button type="submit" className="register-button">Register</button>
         </form>
       </div>
     </div>
