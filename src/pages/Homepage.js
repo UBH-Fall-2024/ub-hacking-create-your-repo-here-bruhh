@@ -8,7 +8,9 @@ function Homepage() {
   const [selectedLot, setSelectedLot] = useState('');
 
   const handleGo = () => {
-    if (selectedLot === 'jarvisB') {
+    if (selectedLot === 'jarvisA') {
+      navigate('/jarvis-a');
+    } else if (selectedLot === 'jarvisB') {
       navigate('/jarvis-b');
     }
   };
@@ -26,6 +28,7 @@ function Homepage() {
             onChange={(e) => setSelectedLot(e.target.value)}
           >
             <option value="" disabled>Select a Parking Lot</option>
+            <option value="jarvisA">Jarvis A Lot</option>
             <option value="jarvisB">Jarvis B Lot</option>
           </select>
           <button className="go-button" onClick={handleGo}>Go</button>

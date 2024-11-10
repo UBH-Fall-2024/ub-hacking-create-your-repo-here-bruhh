@@ -10,8 +10,7 @@ function JarvisB() {
   const rows = 10;
   const columns = 35;
   const rowLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-  const blueSlots = new Set(['1J', '2J', '3J', '4J', '30J', '31J', '32J', '33J']); // List of dark blue spots
-
+  const blueSlots = new Set(['1J', '2J', '3J', '4J', '30J', '31J', '32J', '33J']);
   const layout = Array.from({ length: rows }, (_, rowIndex) =>
     Array.from({ length: columns }, (_, colIndex) => {
       if (rowIndex >= 1 && rowIndex <= 8) {
@@ -41,9 +40,9 @@ function JarvisB() {
     setUnavailableSpots((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(selectedSpot)) {
-        newSet.delete(selectedSpot); // Mark spot as available (green)
+        newSet.delete(selectedSpot);
       } else {
-        newSet.add(selectedSpot); // Mark spot as unavailable (red)
+        newSet.add(selectedSpot); 
       }
       return newSet;
     });
@@ -102,7 +101,7 @@ function JarvisB() {
                       : 'parking-spot'
                   }`}
                   onClick={() => !isBlueSpot && slot !== 'space' && handleSpotClick(spotLabel)}
-                  disabled={slot === 'space' || isBlueSpot} // Disable button if it is a space or blue spot
+                  disabled={slot === 'space' || isBlueSpot}
                 >
                   {slot !== 'space' ? spotLabel : ''}
                 </button>

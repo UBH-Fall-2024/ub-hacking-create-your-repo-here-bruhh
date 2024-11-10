@@ -38,11 +38,11 @@
   }
   
   h1 .highlight {
-    color: #FFDD00; /* Yellow for "Spot" and "Park" */
+    color: #FFDD00; 
   }
   
   h1 .highlight .ampersand {
-    color: white; /* White for "&" */
+    color: white; 
   }
   
   .button-container {
@@ -54,8 +54,8 @@
   .landing-button {
     padding: 15px 30px;
     font-size: 1.5rem;
-    background-color: #FFDD00; /* Yellow background */
-    color: black; /* White text */
+    background-color: #FFDD00; 
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -63,6 +63,6 @@
   }
   
   .landing-button:hover {
-    background-color: white; /* Slightly darker yellow on hover */
+    background-color: white; 
   }
   
