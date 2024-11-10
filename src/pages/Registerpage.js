@@ -8,9 +8,6 @@ function Registerpage() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Add registration logic here if needed
-
-    // Navigate to login page after registration
     navigate('/login');
   };
 

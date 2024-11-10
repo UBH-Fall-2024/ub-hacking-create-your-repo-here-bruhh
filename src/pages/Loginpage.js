@@ -8,7 +8,6 @@ function Loginpage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Assuming login is successful, navigate to homepage
     navigate('/homepage');
   };
 
