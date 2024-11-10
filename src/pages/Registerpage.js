@@ -1,4 +1,3 @@
-// pages/Registerpage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Registerpage.css';
@@ -9,8 +8,12 @@ function Registerpage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('student'); 
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
 
   const handleEmailChange = (e) => {
     const emailInput = e.target.value;
@@ -28,20 +31,21 @@ function Registerpage() {
     setPasswordMatch(true);
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('http://localhost/SpotNPark/include/register.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, email }),
+        body: JSON.stringify({ username, password, email, status }),
       });
 
       const result = await response.json();
       if (response.ok) {
-        alert(result.message); // Handle successful registration
-        navigate('/login'); // Navigate to login page after registration
+        setErrorMessage(''); 
+        setSuccessMessage(result.message); 
+        setTimeout(() => navigate('/login'), 1000);
       } else {
-        alert(result.message); // Handle failed registration
+        setErrorMessage(result.message);
       }
     } catch (error) {
       console.error('Error during registration:', error);
@@ -85,7 +89,8 @@ function Registerpage() {
             value={email}
             onChange={handleEmailChange}
           />
-          {!isEmailValid && <p className="error-text">Email must end with "@buffalo.edu"</p>}
+          {successMessage && <p className="success-text">{successMessage}</p>}
+          {errorMessage && <p className="error-text">{errorMessage}</p>} 
           <button type="submit" className="register-button">Register</button>
         </form>
       </div>
@@ -94,4 +99,3 @@ function Registerpage() {
 }
 
 export default Registerpage;
-
